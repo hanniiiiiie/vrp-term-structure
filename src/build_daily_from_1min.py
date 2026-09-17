@@ -125,7 +125,7 @@ def main() -> None:
 
         print(f"[read] {ticker} ...", end=" ", flush=True)
         daily = to_daily_close(read_1min(src_path))
-        daily.to_csv(out_path, index=False, date_format="%Y-%m-%d")
+        daily.to_csv(out_path, index=False)
 
         row = log_row(ticker, src_path, daily)
         log.append(row)
