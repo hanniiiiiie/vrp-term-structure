@@ -1,5 +1,4 @@
-﻿import numpy as np
-import pandas as pd
+﻿import pandas as pd
 import statsmodels.api as sm
 
 df = pd.read_csv(
@@ -11,7 +10,7 @@ df["slope_6m_1m"] = df["vrp_6m"] - df["vrp_1m"]
 
 x = df.dropna(subset=["slope_6m_1m", "vix"]).copy()
 
-# Continuous month-end specification
+# Continuous month-end specification:
 # slope_6m_1m = alpha + beta * VIX + error
 
 X = sm.add_constant(x["vix"].astype(float))
@@ -31,20 +30,20 @@ print("=== MONTH-END REGIME ROBUSTNESS ===")
 print("Observations:", len(x))
 
 print("\nContinuous specification:")
-print(f"Intercept:       {result.params['const']:.6f}")
-print(f"VIX coefficient:{result.params['vix']:.6f}")
-print(f"HAC SE:          {result.bse['vix']:.6f}")
-print(f"t-stat:          {result.tvalues['vix']:.3f}")
-print(f"p-value:         {result.pvalues['vix']:.4f}")
+print(f"Intercept:        {result.params['const']:.6f}")
+print(f"VIX coefficient:  {result.params['vix']:.6f}")
+print(f"HAC SE:           {result.bse['vix']:.6f}")
+print(f"t-stat:           {result.tvalues['vix']:.3f}")
+print(f"p-value:          {result.pvalues['vix']:.4f}")
 
 ci = result.conf_int().loc["vix"]
 
 print(
-    f"95% CI:          [{ci.iloc[0]:.6f}, "
+    f"95% CI:           [{ci.iloc[0]:.6f}, "
     f"{ci.iloc[1]:.6f}]"
 )
 
-# Descriptive quintiles
+# Descriptive VIX quintiles
 x["vix_regime"] = pd.qcut(
     x["vix"],
     5,
