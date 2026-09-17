@@ -1,0 +1,5 @@
+series,source,source_file,field,native_frequency,derived_frequency,close_rule,timezone,currency,adjustment,n_obs,first_obs_date,last_obs_date,extraction_datetime
+SPX,FirstRateData,SPX_full_1min.txt,close,1min,daily,last bar <= 16:00:00 ET,US/Eastern,USD,none,4531,2008-01-02,2026-01-05,2026-09-17T00:32:49
+VIX,FirstRateData,VIX_full_1min.txt,close,1min,daily,last bar <= 16:00:00 ET,US/Eastern,USD,none,4535,2008-01-02,2026-01-05,2026-09-17T00:32:55
+VIX3M,FirstRateData,VIX3M_full_1min.txt,close,1min,daily,last bar <= 16:00:00 ET,US/Eastern,USD,none,4531,2008-01-02,2026-01-05,2026-09-17T00:32:59
+VIX6M,FirstRateData,VIX6M_full_1min.txt,close,1min,daily,last bar <= 16:00:00 ET,US/Eastern,USD,none,2915,2014-06-04,2026-01-05,2026-09-17T00:33:01
